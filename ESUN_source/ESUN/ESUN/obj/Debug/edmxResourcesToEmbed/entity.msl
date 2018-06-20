@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ESunDBModelStoreContainer" CdmEntityContainer="ESunDBEntities1">
+    <EntitySetMapping Name="TbCurrency">
+      <EntityTypeMapping TypeName="ESunDBModel.TbCurrency">
+        <MappingFragment StoreEntitySet="TbCurrency">
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDepositeInterestRate">
+      <EntityTypeMapping TypeName="ESunDBModel.TbDepositeInterestRate">
+        <MappingFragment StoreEntitySet="TbDepositeInterestRate">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="FloatingRate" ColumnName="FloatingRate" />
+          <ScalarProperty Name="FixRate" ColumnName="FixRate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbDepositLoanCategory">
+      <EntityTypeMapping TypeName="ESunDBModel.TbDepositLoanCategory">
+        <MappingFragment StoreEntitySet="TbDepositLoanCategory">
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbGoldenPassbook">
+      <EntityTypeMapping TypeName="ESunDBModel.TbGoldenPassbook">
+        <MappingFragment StoreEntitySet="TbGoldenPassbook">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="Offer" ColumnName="Offer" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbLoanInterestRate">
+      <EntityTypeMapping TypeName="ESunDBModel.TbLoanInterestRate">
+        <MappingFragment StoreEntitySet="TbLoanInterestRate">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbMessageContent">
+      <EntityTypeMapping TypeName="ESunDBModel.TbMessageContent">
+        <MappingFragment StoreEntitySet="TbMessageContent">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbServiceType">
+      <EntityTypeMapping TypeName="ESunDBModel.TbServiceType">
+        <MappingFragment StoreEntitySet="TbServiceType">
+          <ScalarProperty Name="TypeCode" ColumnName="TypeCode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TbWithdrawalFee">
+      <EntityTypeMapping TypeName="ESunDBModel.TbWithdrawalFee">
+        <MappingFragment StoreEntitySet="TbWithdrawalFee">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_DepositeInterestRate" FunctionName="ESunDBModel.Store.SP_DepositeInterestRate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ESunDBModel.SP_DepositeInterestRate_Result">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="FloatingRate" ColumnName="FloatingRate" />
+          <ScalarProperty Name="FixRate" ColumnName="FixRate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GoldenPassbook" FunctionName="ESunDBModel.Store.SP_GoldenPassbook">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ESunDBModel.SP_GoldenPassbook_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="unit" ColumnName="unit" />
+          <ScalarProperty Name="Bid" ColumnName="Bid" />
+          <ScalarProperty Name="Offer" ColumnName="Offer" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_LoanInterestRate" FunctionName="ESunDBModel.Store.SP_LoanInterestRate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ESunDBModel.SP_LoanInterestRate_Result">
+          <ScalarProperty Name="SerialNo" ColumnName="SerialNo" />
+          <ScalarProperty Name="CurrencyCode" ColumnName="CurrencyCode" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Rate" ColumnName="Rate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_MessageContent" FunctionName="ESunDBModel.Store.SP_MessageContent" />
+    <FunctionImportMapping FunctionImportName="SP_UpdateCreateDate" FunctionName="ESunDBModel.Store.SP_UpdateCreateDate" />
+    <FunctionImportMapping FunctionImportName="SP_WithdrawalFee" FunctionName="ESunDBModel.Store.SP_WithdrawalFee">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ESunDBModel.SP_WithdrawalFee_Result">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Fee" ColumnName="Fee" />
+          <ScalarProperty Name="WeightUnit" ColumnName="WeightUnit" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

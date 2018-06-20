@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ESunDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="TbCurrency">
+    <Key>
+      <PropertyRef Name="CurrencyCode" />
+    </Key>
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Unit" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="TbDepositeInterestRate">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="FloatingRate" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="FixRate" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TbDepositLoanCategory">
+    <Key>
+      <PropertyRef Name="CategoryCode" />
+    </Key>
+    <Property Name="CategoryCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Category" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="Type" Type="char" MaxLength="1" />
+  </EntityType>
+  <EntityType Name="TbGoldenPassbook">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="3" />
+    <Property Name="Bid" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Offer" Type="numeric" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TbLoanInterestRate">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CategoryCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Rate" Type="numeric" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="3" />
+  </EntityType>
+  <EntityType Name="TbMessageContent">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Content" Type="text" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TbServiceType">
+    <Key>
+      <PropertyRef Name="TypeCode" />
+    </Key>
+    <Property Name="TypeCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Description" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TbWithdrawalFee">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CurrencyCode" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="WeightUnit" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Fee" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Function Name="SP_DepositeInterestRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="varchar" Mode="In" />
+    <Parameter Name="currencyCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_GoldenPassbook" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="createDate" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_LoanInterestRate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="date" Type="varchar" Mode="In" />
+    <Parameter Name="currencyCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_MessageContent" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="TypeCode" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_UpdateCreateDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="SP_WithdrawalFee" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="createDate" Type="varchar" Mode="In" />
+    <Parameter Name="currencyCode" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="ESunDBModelStoreContainer">
+    <EntitySet Name="TbCurrency" EntityType="Self.TbCurrency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbDepositeInterestRate" EntityType="Self.TbDepositeInterestRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbDepositLoanCategory" EntityType="Self.TbDepositLoanCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbGoldenPassbook" EntityType="Self.TbGoldenPassbook" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbLoanInterestRate" EntityType="Self.TbLoanInterestRate" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbMessageContent" EntityType="Self.TbMessageContent" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbServiceType" EntityType="Self.TbServiceType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TbWithdrawalFee" EntityType="Self.TbWithdrawalFee" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

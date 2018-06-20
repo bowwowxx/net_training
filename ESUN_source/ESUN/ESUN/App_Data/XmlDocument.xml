@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ESUN</name>
+    </assembly>
+    <members>
+        <member name="T:ESUN.Controllers.GetRateController">
+            <summary>
+            台幣存放款利率查詢
+            </summary>
+        </member>
+        <member name="M:ESUN.Controllers.GetRateController.Get">
+            <summary>
+            取得台幣存放款利率
+            </summary>
+            <returns>JSON</returns>
+        </member>
+        <member name="P:ESUN.Models.GlodRateModel.GoldPrice">
+            <summary>
+            黃金存摺利率
+            </summary>
+        </member>
+        <member name="P:ESUN.Models.RateModel.UpdateTime">
+            <summary>
+            生效日
+            </summary>
+        </member>
+        <member name="P:ESUN.Models.RateModel.depositeInterestRateList">
+            <summary>
+            存款利率
+            </summary>
+        </member>
+        <member name="P:ESUN.Models.RateModel.loanInterestRateList">
+            <summary>
+            放款利率
+            </summary>
+        </member>
+    </members>
+</doc>

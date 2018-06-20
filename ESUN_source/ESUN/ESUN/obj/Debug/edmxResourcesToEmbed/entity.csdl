@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ESunDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="TbCurrency">
+    <Key>
+      <PropertyRef Name="CurrencyCode" />
+    </Key>
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Unit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TbDepositeInterestRate">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FloatingRate" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="FixRate" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TbDepositLoanCategory">
+    <Key>
+      <PropertyRef Name="CategoryCode" />
+    </Key>
+    <Property Name="CategoryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Category" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Type" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TbGoldenPassbook">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="Bid" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Offer" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TbLoanInterestRate">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CategoryCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rate" Type="Decimal" Precision="2" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TbMessageContent">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TbServiceType">
+    <Key>
+      <PropertyRef Name="TypeCode" />
+    </Key>
+    <Property Name="TypeCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="TbWithdrawalFee">
+    <Key>
+      <PropertyRef Name="SerialNo" />
+    </Key>
+    <Property Name="SerialNo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CurrencyCode" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="WeightUnit" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Fee" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="ESunDBEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TbCurrency" EntityType="Self.TbCurrency" />
+    <EntitySet Name="TbDepositeInterestRate" EntityType="Self.TbDepositeInterestRate" />
+    <EntitySet Name="TbDepositLoanCategory" EntityType="Self.TbDepositLoanCategory" />
+    <EntitySet Name="TbGoldenPassbook" EntityType="Self.TbGoldenPassbook" />
+    <EntitySet Name="TbLoanInterestRate" EntityType="Self.TbLoanInterestRate" />
+    <EntitySet Name="TbMessageContent" EntityType="Self.TbMessageContent" />
+    <EntitySet Name="TbServiceType" EntityType="Self.TbServiceType" />
+    <EntitySet Name="TbWithdrawalFee" EntityType="Self.TbWithdrawalFee" />
+    <FunctionImport Name="SP_DepositeInterestRate" ReturnType="Collection(ESunDBModel.SP_DepositeInterestRate_Result)">
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="currencyCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GoldenPassbook" ReturnType="Collection(ESunDBModel.SP_GoldenPassbook_Result)">
+      <Parameter Name="createDate" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LoanInterestRate" ReturnType="Collection(ESunDBModel.SP_LoanInterestRate_Result)">
+      <Parameter Name="date" Mode="In" Type="String" />
+      <Parameter Name="currencyCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_MessageContent" ReturnType="Collection(String)">
+      <Parameter Name="TypeCode" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_UpdateCreateDate" />
+    <FunctionImport Name="SP_WithdrawalFee" ReturnType="Collection(ESunDBModel.SP_WithdrawalFee_Result)">
+      <Parameter Name="createDate" Mode="In" Type="String" />
+      <Parameter Name="currencyCode" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_DepositeInterestRate_Result">
+    <Property Type="Int32" Name="SerialNo" Nullable="false" />
+    <Property Type="String" Name="CurrencyCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="FloatingRate" Nullable="false" Precision="2" Scale="2" />
+    <Property Type="Decimal" Name="FixRate" Nullable="false" Precision="2" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_GoldenPassbook_Result">
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="unit" Nullable="true" MaxLength="10" />
+    <Property Type="Decimal" Name="Bid" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="Decimal" Name="Offer" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SP_LoanInterestRate_Result">
+    <Property Type="Int32" Name="SerialNo" Nullable="false" />
+    <Property Type="String" Name="CurrencyCode" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="Category" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Rate" Nullable="false" Precision="2" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="SP_WithdrawalFee_Result">
+    <Property Type="String" Name="Description" Nullable="true" MaxLength="100" />
+    <Property Type="Decimal" Name="Fee" Nullable="false" Precision="10" Scale="2" />
+    <Property Type="String" Name="WeightUnit" Nullable="false" MaxLength="10" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+  </ComplexType>
+</Schema>
